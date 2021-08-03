@@ -7,13 +7,16 @@ import pymongo
 
 def log_stats(a: dict) -> int:
     """log"""
-    #connect to default host (localhost)
+    # connect to default host (localhost)
     connection = pymongo.MongoClient()
     logs = connection.logs.nginx
     return logs.count_documents(a)
 
 
-if __name__ == "__main__":
+def main_function():
+    """
+    Entry point
+    """
     print(f"{log_stats({})} logs")
     print("Methods:")
     print(f"\tmethod GET: {log_stats({'method': 'GET'})}")
@@ -22,3 +25,7 @@ if __name__ == "__main__":
     print(f"\tmethod PATCH: {log_stats({'method': 'PATCH'})}")
     print(f"\tmethod DELETE: {log_stats({'method': 'DELETE'})}")
     print(f"{log_stats({'method': 'GET', 'path': '/status'})} status check")
+
+
+if __name__ == "__main__":
+    main_function()
