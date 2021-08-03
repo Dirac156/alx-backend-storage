@@ -14,6 +14,8 @@ A NoSQL database provides a mechanism for storage and retrieval of data that is 
 | 3-all | Write a script that lists all documents in the collection school |
 | 4-match | Write a script that lists all documents with name="Holberton school" in the collection school |
 | 5-count | Write a script that displays the number of documents in the collection school |
+| 6-update | Write a script that adds a new attribute to a document in the collection school |
+
 
 
 
