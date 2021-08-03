@@ -2,8 +2,6 @@
 """
 find by topic
 """
-
-
 import pymongo
 
 
