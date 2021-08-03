@@ -7,7 +7,8 @@ import pymongo
 
 def log_stats(a: dict) -> int:
     """log"""
-    connection = pymongo.MongoClient('mongodb://127.0.0.1:27017')
+    #connect to default host (localhost)
+    connection = pymongo.MongoClient()
     logs = connection.logs.nginx
     return logs.count_documents(a)
 
