@@ -8,14 +8,21 @@ from typing import Callable, Optional, Union
 from functools import wraps
 
 
+def call_history():
+    """ memorize user actions"""
+    pass
+
+
 def count_calls(method: callable) -> callable:
     """ count the number of time a function is called """
+    method_key = method.__qualname__
 
     @wraps(method)
     def wrapper(self, *args, **kwargs):
         """ function """
-        self._redis.incr(method.__qualname__)
+        self._redis.incr(method_key)
         return method(self, *args, **kwargs)
+
     return wrapper
 
 
@@ -29,6 +36,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
+    @call_history
     @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """ store new data and return a new uuid"""
