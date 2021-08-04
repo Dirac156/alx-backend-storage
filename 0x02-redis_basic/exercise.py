@@ -11,8 +11,8 @@ from functools import wraps
 def call_history(method: Callable) -> Callable:
     """ memorize user actions"""
     method_key = method.__qualname__
-    inputs = method_key + ':input'
-    outputs = method_key + ':output'
+    inputs = method_key + ':inputs'
+    outputs = method_key + ':outputs'
 
     @wraps(method)
     def wrapper(self, *args, **kwds):
