@@ -24,17 +24,21 @@ def call_history(method: callable) -> callable:
     return wrapper
 
 
-def count_calls(method: callable) -> callable:
-    """ count the number of time a function is called """
+def count_calls(method: Callable) -> Callable:
+    """ counts method call """
     method_key = method.__qualname__
 
     @wraps(method)
     def wrapper(self, *args, **kwds):
-        """ function wrapped """
+        """wrapped function """
         self._redis.incr(method_key)
         return method(self, *args, **kwds)
-
     return wrapper
+
+
+def replay():
+    """ display the history call """
+    pass
 
 
 class Cache:
