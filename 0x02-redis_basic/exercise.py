@@ -8,7 +8,7 @@ from typing import Callable, Optional, Union
 from functools import wraps
 
 
-def call_history(method: callable) -> callable:
+def call_history(method: Callable) -> Callable:
     """ memorize user actions"""
     method_key = method.__qualname__
     inputs = method_key + ':input'
